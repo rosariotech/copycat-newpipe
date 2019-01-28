@@ -40,4 +40,26 @@ goto fail
 if not "%OS" == "Windows_NT" goto win9xME_args
 
 :win9xME_args
+set CMD_LINE_ARGS=
+set _SKIP=2
 
+:win9xME_args_slurp
+if "x%~1" == "x" goto execute
+set CMD_LINE_ARGS=%*
+
+:execute
+set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %CMD_LINE_ARGS%
+
+:end
+if "%ERRORLEVEL%" == "0" goto mainEnd
+
+:fail
+if not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
+exit /b 1
+
+:mainEnd
+if "%OS%" == "Windows_NT" endlocal
+
+:omega
