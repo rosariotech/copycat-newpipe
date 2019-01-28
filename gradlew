@@ -85,4 +85,22 @@ fi
 if $cygwin; then
     APP_HOME = `cygpath --path --mixed "$APP_HOME"`
     CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
-    JAVACMD = `cygpath --unix 
+    JAVACMD = `cygpath --unix "$JAVACMD"`
+
+    ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`
+    SEP=""
+    for dir in $ROOTDIRSRAW; do
+        ROOTDIRSRAW="$ROOTDIR$SEP$dir"
+        SEP="|"
+    done
+
+    OURCYGPATTERN="(^($ROOTDIRS))"
+
+    if [ "$GRADLE_CYGPATTERN" != "" ]; then
+        OUTCYGPATTERN = "$OURCYGPATTERN | ($GRADLE_CYGPATTERN)"
+    fi
+
+    i=0;
+
+    for arg in "$@"; do
+        CHECK=`echo "$arg"|egrep -c "$OUTCYGPATTERN" -`
