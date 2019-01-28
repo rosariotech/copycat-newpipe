@@ -62,5 +62,27 @@ dependencies{
     implementation "com.android.support:recyclerview-v7:$supportLibVersion"
     implementation "com.android.support:preference-v14:$supportLibVersion"
 
-    implementation
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'ch.acra:acra:4.9.2'
+
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.github.nirhart:ParallaxScroll:dd53d1f9d1'
+    implementation 'com.nonsenseapps:filepicker:3.0.1'
+    implementation 'com.google.android.exoplayer:exoplayer:r2.5.4'
+
+    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
+    debugImplementation 'com.facebook.stetho:stetho-urlconnection:1.5.0'
+    debugImplementation 'com.android.support:multidex:1.0.2'
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+
+    implementation 'android.arch.persistence.room:runtime:1.0.0'
+    implementation 'android.arch.persistence.room:rxjava2:1.0.0'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.0.0'
+
+    implementation 'frankiesardo:icepick:3.2.0'
+    annotationProcessor 'frankiesardo:icepick-processor:3.2.0'
 }
