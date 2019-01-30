@@ -180,3 +180,55 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <data android:mimeType="text-plain"/>
     </intent-filter>
+</activity>
+<activity
+    android:name=".RouterPopupActivity"
+    android:label="@string/popup_mode_share_menu_title"
+    android:taskAffinity=""
+    android:theme="@style/PopupPermissionsTheme">
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH"/>
+        <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+
+        <data android:scheme="http"/>
+        <data android:scheme="https"/>
+        <data android:host="youtube.com"/>
+        <data android:host="m.youtube.com"/>
+        <data android:host="www.youtube.com"/>
+        <data android:pathPrefix="/v/"/>
+        <data android:pathPrefix="/embed/"/>
+        <data android:pathPrefix="/watch"/>
+        <data android:pathPrefix="/attribution_link"/>
+    </intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH"/>
+        <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="http"/>
+        <data android:scheme="https"/>
+        <data android:host="youtu.be"/>
+        <data android:pathPrefix="/"/>
+    <intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH"/>
+        <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="vnd.youtube"/>
+        <data android:scheme="vnd.youtube.launch"/>
+    </intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.SEND"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="text/plain"/>
+    </intent-filter>
+</activity>
+</application>
+</manifest>
