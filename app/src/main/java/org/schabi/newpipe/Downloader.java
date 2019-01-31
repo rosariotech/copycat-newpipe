@@ -54,6 +54,39 @@ public class Downloader implements org.schabi.newpipe.extractor.Downloader{
         URL url = new URL(siteUrl);
         HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
         Iterator it = customProperties.entrySet().iterator();
-        while (it.hasNext)
+        while (it.hasNext()){
+            Map.Entry pair = (Map.Entry) it.next();
+            con.setRequestProperty((String) pair.getKey(), (String) pair.getValue());
+        }
+        return dl(con);
+    }
+
+    @Override
+    public String download(String siteUrl) throws IOException, ReCapthaException{
+        URL url = new URL(siteUrl);
+        HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+        return dl(con);
+    }
+
+    private static String dl(HttpsURLConnection con) throws IOException, ReCapthaException{
+        StringBuilder response = new StringBuilder();
+        BufferedReader in= null;
+
+        try{
+            con.setReadTimeout(30*1000);
+            con.setRequestMethod("GET");
+            con.setRequestProperty("User-Agent", USER_AGENT);
+
+            if (getCookies().length() > 0){
+                con.setRequestProperty("Cookie", getCookies());
+            }
+
+            in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+            String inputLine;
+            while((inputLine = in.readLine()) != null){
+                response.append(inputLine);
+            }
+        } catch (Exception e)
     }
 }
