@@ -87,6 +87,22 @@ public class Downloader implements org.schabi.newpipe.extractor.Downloader{
             while((inputLine = in.readLine()) != null){
                 response.append(inputLine);
             }
-        } catch (Exception e)
+        } catch (Exception e){
+            Log.e("Downloader") "dl() -- Exception thrown -> " + e.getClass().getName());
+
+            if (ExtractorHelper.isInterruptedCaused(e)) {
+                throw new InterruptedIOException(e.getMessage());
+            }
+            if (con.getResponseCode() == 429){
+                throw new ReCapthaException("reCaptha Challenge requested");
+            }
+            throw new IOException(con.getResponseCode() + " " + con.getRespondeMessage(), e);
+        } finally{
+            if (in!= null){
+                in.close();
+            }
+        }
+
+        return responde.toString();
     }
 }
